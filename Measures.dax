@@ -1,0 +1,25 @@
+Total Titles = DISTINCTCOUNT(Netflix[show_id])
+
+Movies = CALCULATE([Total Titles], KEEPFILTERS(Netflix[type] = "Movie"))
+
+Series = CALCULATE([Total Titles], KEEPFILTERS(Netflix[type] = "TV Show"))
+
+Movie Share = DIVIDE([Movies], [Total Titles])
+
+Series Share = DIVIDE([Series], [Total Titles])
+
+Countries = CALCULATE(DISTINCTCOUNT(Countries[country]), Countries[country] <> "Məlumat yoxdur")
+
+Genre Count = DISTINCTCOUNT(Genres[genre])
+
+Avg Movie Minutes = CALCULATE(AVERAGE(Netflix[duration]), KEEPFILTERS(Netflix[type] = "Movie"))
+
+Avg Seasons = CALCULATE(AVERAGE(Netflix[duration]), KEEPFILTERS(Netflix[type] = "TV Show"))
+
+Missing Country = CALCULATE([Total Titles], KEEPFILTERS(Netflix[country] = "Məlumat yoxdur"))
+
+Missing Added Date = CALCULATE([Total Titles], KEEPFILTERS(ISBLANK(Netflix[date_added])))
+
+Country Rank = RANKX(FILTER(ALLSELECTED(Countries[country]), Countries[country] <> "Məlumat yoxdur"), [Total Titles], , DESC, DENSE)
+
+Genre Rank = RANKX(ALLSELECTED(Genres[genre]), [Total Titles], , DESC, DENSE)

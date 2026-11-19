@@ -1,0 +1,46 @@
+NETFLIX ANALYTICS — POWER BI LAYİHƏSİ
+
+AÇILIŞ VƏ PBIX KİMİ SAXLAMA
+1. ZIP arxivini tam çıxarın. Qovluqların adlarını və bir-birinə nisbətən yerlərini dəyişməyin.
+2. Windows-da aktual Power BI Desktop ilə Netflix.pbip faylını açın.
+   .pbip tanınmırsa: File → Options and settings → Options → Preview features
+   bölməsində Power BI Project (.pbip) save option aktivləşdirin və proqramı yenidən başladın.
+3. Home → Refresh seçin. Bu addım vacibdir: layihədə hazır data keş faylı yoxdur.
+   Data daxilə yerləşdirilmiş CSV-dən yüklənir; fayl yolu və internet bağlantısı tələb olunmur.
+4. File → Save As → Power BI (*.pbix) seçərək Netflix_Dashboard.pbix kimi saxlayın.
+
+SƏHİFƏLƏR
+• Ümumi baxış: əsas göstəricilər, film/serial bölgüsü, əlavə illəri, yaş kateqoriyaları və janrlar.
+• Ölkə və janr analizi: unikal ölkələr, janrlar, ölkəsi məlum olmayan əsərlər və ilk 10 sıralaması.
+• Kataloq: əsərlərin siyahısı, il, növ, yaş kateqoriyası, müddət, ölkə və əlavə tarixi.
+Filtrlər hər səhifə üzrə işləyir; səhifələr arasında avtomatik sinxronlaşdırılmayıb.
+Qrafik seçimləri eyni səhifədəki digər vizualları filtrləyir.
+İlk 10 sıralamasında bərabər saylı nəticələr olarsa 10-dan çox sətir görünə bilər.
+
+DATA VƏ HESABLAMA
+• 7 787 unikal əsər: 5 377 film və 2 410 serial.
+• Film payı: 69.05%; serial payı: 30.95%.
+• 118 məlum ölkə; 42 janr; filmlərin orta müddəti: 99.3 dəqiqə.
+• Buraxılış illəri: 1925–2021; əlavə tarixləri: 01.01.2008–16.01.2021.
+• 507 əsərin ölkəsi, 10 əsərin əlavə tarixi yoxdur. 2021 tam il deyil.
+• Ölkə və janrlar vergülə görə ayrılır, boşluqları təmizlənir.
+  Hər əsər bir neçə ölkə/janrda görünə bilər; onların saylarının cəmi kataloq cəminə bərabər olmaya bilər.
+• Ümumi say DISTINCTCOUNT(show_id) ilə hesablanır. Ölkə sayından “Məlumat yoxdur” çıxarılır.
+• duration filmlərdə dəqiqə, seriallarda mövsüm sayıdır; bu vahidlər birlikdə ortalanmır.
+• rating yaş/məzmun kateqoriyasıdır; izləyici balı və ya IMDb reytinqi deyil.
+• Dataset satış, baxış və gəlir məlumatı vermir; belə göstəricilər əlavə edilməyib.
+• Data/NetFlix.csv orijinal nüsxədir. Bu faylı dəyişmək daxilə yerləşdirilmiş datanı avtomatik dəyişmir.
+  Yeniləmə üçün semantic modelin NetflixSource Power Query sorğusunu dəyişmək lazımdır.
+
+DAX VƏ MODEL
+Netflix əsas cədvəldir. Countries və Genres show_id ilə many-to-one əlaqəlidir;
+ikitərəfli filtr keçidi ölkə və janr seçimlərini əsərlərə tətbiq edir.
+Measures.dax bütün ölçüləri ehtiva edir; ayrıca import etmək lazım deyil.
+
+YOXLAMA VƏ MƏHDUDİYYƏT
+Göstəricilər CSV ilə müqayisə olunub. JSON sintaksisi, Microsoft-un layihə fayl sxemləri,
+fayl istinadları, model sütunları və vizualların səhifə sərhədləri yoxlanıb.
+Bu mühitdə Windows və Power BI Desktop yoxdur: açılış, Power Query/DAX icrası,
+interaktiv seçimlər və .pbix-ə çevrilmə Power BI Desktop-da sınaqdan keçirilməyib.
+Preview şəkilləri və PDF eyni səhifə yerləşiminə əsaslanan illüstrativ önizləmələrdir;
+Power BI-dan götürülmüş ekran görüntüləri deyil. Şrift və qrafik görünüşündə fərq ola bilər.

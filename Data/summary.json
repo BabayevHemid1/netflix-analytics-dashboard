@@ -1,0 +1,10 @@
+{
+  "total": 7787,
+  "movies": 5377,
+  "series": 2410,
+  "countries": 118,
+  "genres": 42,
+  "average_movie_minutes": 99.3,
+  "missing_country": 507,
+  "missing_added_date": 10
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Netflix Analytics",
+  "dataColors": [
+    "#E50914",
+    "#3DC6B5",
+    "#EAB866",
+    "#829DE8",
+    "#D67B96"
+  ],
+  "background": "#101113",
+  "foreground": "#F5F5F7",
+  "tableAccent": "#E50914",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "color": "#A7ADB7"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F5F5F7"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F5F5F7"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "color": "#F5F5F7"
+    }
+  }
+}
